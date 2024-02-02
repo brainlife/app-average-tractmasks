@@ -1,0 +1,9 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=8,walltime=1:30:00
+#PBS -N app-average-tractmasks
+#PBS -V
+
+set -e
+set -x
+
+time singularity exec -e docker://brainlife/fsl:6.0.4-patched2 ./average/sh

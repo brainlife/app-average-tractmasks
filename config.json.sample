@@ -1,0 +1,14 @@
+{
+    "inputs": [
+        "testdata/2001/masks",
+        "testdata/2009/masks",
+        "testdata/2012/masks",
+        "testdata/2013/masks",
+        "testdata/2019/masks",
+        "testdata/2019/masks",
+        "testdata/2022/masks",
+        "testdata/2029/masks",
+        "testdata/2032/masks",
+        "testdata/2042/masks"
+	]
+}
