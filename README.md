@@ -10,7 +10,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg" alt="MIT license"></a>
 </p>
 
-## 🧠 At a glance
+## At a glance
 
 <!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
 
@@ -20,19 +20,19 @@ For each mask file name found in the inputs, concatenates the matching files and
 
 | | |
 |---|---|
-| 📥 **Inputs** | `neuro/tractmasks` |
-| 📤 **Outputs** | `neuro/tractmasks` |
-| 🐳 **Container** | `brainlife/fsl:6.0.4-patched2` |
-| ⚙️ **Resources** | 8 CPUs · 1.5 h walltime |
-| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.811](https://doi.org/10.25663/brainlife.app.811) |
+| **Inputs** | `neuro/tractmasks` |
+| **Outputs** | `neuro/tractmasks` |
+| **Container** | `brainlife/fsl:6.0.4-patched2` |
+| **Resources** | 8 CPUs · 1.5 h walltime |
+| **Run it** | [doi.org/10.25663/brainlife.app.811](https://doi.org/10.25663/brainlife.app.811) |
 
-#### 📥 Inputs
+#### Inputs
 
 | Input | Datatype | Required | Description |
 |---|---|---|---|
 | `inputs` | `neuro/tractmasks` | yes | Tract masks from several subjects or runs, with matching file names. All masks must be in the same space and voxel grid. |
 
-#### 📤 Outputs
+#### Outputs
 
 | Output | Datatype | Description |
 |---|---|---|
@@ -40,13 +40,13 @@ For each mask file name found in the inputs, concatenates the matching files and
 
 <!-- brainlife-app:end -->
 
-## 🚀 Running the App
+## Running the App
 
-### ☁️ On brainlife.io
+### On brainlife.io
 
 Open the App at [doi.org/10.25663/brainlife.app.811](https://doi.org/10.25663/brainlife.app.811), select several `neuro/tractmasks` datasets from your project and press **Execute**. All masks must already be in the same space and on the same voxel grid, and masks of the same tract must share a file name across inputs. The result is a new `neuro/tractmasks` dataset tagged `average`.
 
-### 💻 Locally
+### Locally
 
 You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqlang.github.io/jq/). The App runs FSL from the `brainlife/fsl:6.0.4-patched2` container.
 
@@ -71,19 +71,19 @@ You need [Singularity/Apptainer](https://apptainer.org/) and [`jq`](https://jqla
 
 For every mask file name found in the inputs, `average.sh` concatenates the matching files with `fslmerge -t` and takes their mean over the fourth dimension with `fslmaths -Tmean`.
 
-## 📦 Outputs
+## Outputs
 
 ```text
 masks/
 └── masks/   one averaged NIfTI mask per tract file name found in the inputs
 ```
 
-## 🩺 Troubleshooting
+## Troubleshooting
 
 - **`something went wrong. check files and logs`**: `masks/masks` is empty. Check that every input directory contains mask files.
 - **Known issues in the current code**: `main` calls `./average/sh` instead of `./average.sh`, and the loop in `average.sh` looks up the first file name (`mask_files[0]`) for every tract. Until these are fixed, the App is likely to fail or to average the wrong files; check the outputs before using them.
 
-## 📚 Citing
+## Citing
 
 > [!TIP]
 > If you use this App in your work, please cite the App, the software it builds on and brainlife.io (below). GitHub's **Cite this repository** button gives the App citation in APA and BibTeX.
@@ -93,12 +93,12 @@ masks/
 - Hayashi S, Caron BA, Heinsfeld AS, et al. brainlife.io: a decentralized and open-source cloud platform to support neuroscience research. *Nature Methods* 21:809–813 (2024). [doi:10.1038/s41592-024-02237-2](https://doi.org/10.1038/s41592-024-02237-2)
 - Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. *Scientific Data* 6:69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
 
-## 👥 Authors
+## Authors
 
 - Brad Caron
 - Franco Pestilli (project director)
 
-## 💰 Funding
+## Funding
 
 [![Wellcome-226486/Z/22/Z](https://img.shields.io/badge/Wellcome-226486%2FZ%2F22%2FZ-purple.svg)](https://wellcome.org/)
 [![NIH-NINDS-U24NS140384](https://img.shields.io/badge/NIH_NINDS-U24NS140384-green.svg)](https://reporter.nih.gov/project-details/11261037)
@@ -117,6 +117,6 @@ masks/
 
 <sub>brainlife.io is publicly funded, and acknowledging that support helps keep it running. This App was developed with support from Wellcome, the U.S. National Institutes of Health (including the BRAIN Initiative BRAIN CONNECTS program: The Axonal Projectome EXchange, U24NS140384, and the Center for Mesoscale Connectomics, UM1NS132207) and the U.S. National Science Foundation.</sub>
 
-## ⚖️ License
+## License
 
 [MIT](LICENSE). FSL itself is distributed under its own [license](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Licence).
